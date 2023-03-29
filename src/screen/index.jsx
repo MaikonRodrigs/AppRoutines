@@ -7,7 +7,7 @@ import * as I from '../assets/images/index'
 
 function Screen() {
   const data = Routines.routine
-  const [hours, setHours] = useState('22:21')
+  const [hours, setHours] = useState('')
   const [currentArray, setCurrentArray] = useState(15)
 
   const seHou = useCallback(() => {
@@ -15,7 +15,7 @@ function Screen() {
     var horas = dataAtual.getHours();
     var minutos = dataAtual.getMinutes();
     const time = horas + ':' + minutos
-    // setHours(time)
+    setHours(time)
     // if (horas < 9) {
     //   const time = '0' + horas + ':' + minutos
     //   setHours(time)
