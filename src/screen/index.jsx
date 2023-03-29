@@ -3,18 +3,19 @@ import React, { useCallback, useEffect, useState } from 'react';
 import * as S from './styles';
 import Routines from '../assets/data/Routines'
 
+import * as I from '../assets/images/index'
 
 function Screen() {
-  const [hours, setHours] = useState('1:40')
-  const [currentArray, setCurrentArray] = useState(1)
+  const data = Routines.routine
+  const [hours, setHours] = useState('22:21')
+  const [currentArray, setCurrentArray] = useState(15)
 
   const seHou = useCallback(() => {
     var dataAtual = new Date();
     var horas = dataAtual.getHours();
     var minutos = dataAtual.getMinutes();
     const time = horas + ':' + minutos
-    setHours(time)
-
+    // setHours(time)
     // if (horas < 9) {
     //   const time = '0' + horas + ':' + minutos
     //   setHours(time)
@@ -39,26 +40,51 @@ function Screen() {
     // }
   }, [])
 
-
-  function next() {
-    setHours(currentArray + 1)
+  function Array(i) {
+    if (data[i]?.background === 'morning') { return I.Morning }
+    if (data[i]?.background === 'morning') { return I.Coffe }
+    if (data[i]?.background === 'coffe') { return I.Coffe }
+    if (data[i]?.background === 'daily') { return I.Daily }
+    if (data[i]?.background === 'eat_1') { return I.Eat_1 }
+    if (data[i]?.background === 'work_0') { return I.Work_0 }
+    if (data[i]?.background === 'eat_1') { return I.Eat_1 }
+    if (data[i]?.background === 'run') { return I.Run }
+    if (data[i]?.background === 'hungry') { return I.Hungry }
+    if (data[i]?.background === 'work_2') { return I.Work_2 }
+    if (data[i]?.background === 'eat_1') { return I.Eat_1 }
+    if (data[i]?.background === 'work_2') { return I.Work_2 }
+    if (data[i]?.background === 'work_1') { return I.Work_1 }
+    if (data[i]?.background === 'banho') { return I.Banho }
+    if (data[i]?.background === 'eat') { return I.Eat }
+    if (data[i]?.background === 'relax_2') { return I.Relax_2 }
+    if (data[i]?.background === 'study') { return I.Study }
+    if (data[i]?.background === 'eat_1') { return I.Eat_1 }
+    if (data[i]?.background === 'gaming') { return I.Gaming }
+    if (data[i]?.background === 'eat') { return I.Eat }
+    if (data[i]?.background === 'water') { return I.Water }
+    if (data[i]?.background === 'relax_1') { return I.Relax_1 }
+    if (data[i]?.background === 'sleep') { return I.Sleep }
+    if (data[i]?.background === 'sleep_1') { return I.Sleep_1 }
   }
 
   useEffect(() => {
+    Array()
     seHou()
-    console.log(hours)
     setInterval(() => {
       seHou()
+      Array()
     }, 60000)
   }, [])
 
-  const data = Routines.routine
+
+
 
   function routine(i) {
     return (
       <S.Container>
         <S.Card >
-          <S.Img background={data[i].background} >
+          <S.Img background={() => Array(i)}>
+            {/* <S.Img background={() => setImagesBackground()} > */}
             <S.Header>
               <S.TasksAppIcon />
               <S.User>Maikon</S.User>
@@ -127,8 +153,6 @@ function Screen() {
   if (hours >= '1:50' && hours <= '8:40') { return routine(23) }
 
 }
-
-
 
 
 export default Screen;
