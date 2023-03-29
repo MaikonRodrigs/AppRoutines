@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { ArrowUpCircle } from "@styled-icons/bootstrap/ArrowUpCircle";
-import { NightShelter } from "@styled-icons/material/NightShelter";
+import { TasksApp } from "@styled-icons/fluentui-system-filled/TasksApp";
+import { RightArrowCircle } from "@styled-icons/boxicons-regular/RightArrowCircle";
+import { MoreHorizontalOutline } from "@styled-icons/evaicons-outline/MoreHorizontalOutline";
 
 export const Container = styled.div`
   display: flex;
@@ -9,90 +10,124 @@ export const Container = styled.div`
   justify-content: center;
   margin: 0 auto;
   flex-direction: column;
+  flex-direction: row;
 `;
 
-export const Row = styled.div`
-  /* display: ${({ display }) => display}; */
-  display: flex;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  top: 0;
-  right: 0;
-  box-shadow: var(--shadow);
-  border-radius: 16px;
-  background-color: blueviolet;
-  /* position: relative; */
-  background-color: ${({ backgroundColor }) => backgroundColor};
-`;
 export const Card = styled.div`
   display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  width: 300px;
+  height: 500px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  border-radius: 16px;  
+  z-index: 10;
+
 `;
 
-export const Img = styled.img`
-  width: 240px;
+export const NextCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 400px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  z-index: 0;
+
+  opacity: .5;
+  filter: blur(.2rem);
+
+  margin-left: -120px;
+
 `;
 
-export const Title = styled.div`
-  font-size: 22px;
-  font-weight: 600;
-  /* letter-spacing: 2px; */
-  margin-top: 40px;
+export const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+`;
+
+export const TasksAppIcon = styled(TasksApp)`
+  width: 25px;
+  color: white;
+`;
+export const User = styled.div`
+  font-size: 10px;
+  font-weight: 700;
+  color: black;
+  padding: 1px 10px;
+  border-radius: 16px;
+  background-color: white;
   text-transform: uppercase;
 `;
 
-export const Hour = styled.div`
+export const Img = styled.div`
+  background-image: url(${({ background }) => background});
+  /* width: 190px; */
+  /* background: blue; */
+  height: 320px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: auto;
+  object-position: 0% 100%;
+  border-radius: 16px;  
+
+`;
+
+export const Description = styled.div`
+  color: black;
+  font-size: 18px;
+  font-weight: 900;
+  margin-top: 20px;
+  padding: 0 20px 10px;
+  letter-spacing: -0.9px;
+  text-align: left;
+`;
+
+export const DoMore = styled.span`
+  text-transform: lowercase;
+  text-transform: none;
+  font-size: 14px;
+  color: #9f9f9f;
+  padding: 0 20px;
+`;
+
+export const RowTimed = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  font-size: 104px;
-  font-weight: 600;
-  margin-top: 140px;
-  /* letter-spacing: -7px; */
-  
-  /* position: absolute;
-  margin: 0 auto;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-
-  /* border: 12px solid rgba(0, 0, 0, .1);
-  padding: 70px;
-  width: 140px;
-  height: 140px;
-  border-radius: 9999px;
-
-  background-color: rgba(0, 0, 0, .7); */
-
-  
-  /* &::after {
-    content: "h";
-    font-size: 22px;
-    margin-top: 40px;
-  } */
+  padding: 0 20px;
+  margin-top: 35px;
 `;
-export const Details = styled.div`
-  font-size: 16px;
+
+export const MoreIcon = styled(MoreHorizontalOutline)`
+  color: var(--black);
+  width: 30px;
+  margin-top: 7px;
+  cursor: pointer;
+`;
+
+export const Timed = styled.div`
+  color: var(--black);
+  font-size: 30px;
   font-weight: 600;
 `;
-export const Next = styled.div`
-  font-size: 16px;
 
-  margin-top: 100px;
-  border: 1px solid #fff;
-  padding: 2px 20px;
-  border-radius: 9999px;
+export const NextMore = styled.div`
+  /* margin-top: 5px; */
 `;
 
-export const Sleep = styled.div`
-  font-size: 33px;
+export const TimedNext = styled.span`
+  font-size: 12px;
+  color: #818181;
+  /* padding: 0 22px; */
 `;
 
-export const NightShelterIcon = styled(NightShelter)`
-  width: 302px;
-  color: #fff;
+export const ArrowCircleRightIcon = styled(RightArrowCircle)`
+  color: #818181;
+  width: 15px;
+  cursor: pointer;
+  margin-right: 6px;
 `;

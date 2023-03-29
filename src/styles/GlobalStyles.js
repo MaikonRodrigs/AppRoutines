@@ -2,7 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   *{
-    @import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700,800');
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,9 +20,7 @@ html, border-style, #root {
     border: 0;
     background: none;
     outline: none;
-    font-family: var(--font-family-sans-serif);
-    font-family: 'Nunito', sans-serif;
-    font-size: 10px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     }
     
     html {
@@ -30,6 +30,12 @@ html, border-style, #root {
     }
     
     :root {
+
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+
     --primary: #000;
     --secondary: #15181C;
     --white: #D9D9D9;
@@ -47,5 +53,7 @@ html, border-style, #root {
     --job: #8870ff;
     --recreation: #aab69b;
     --important: #ff0000;
+
+    --working: "('src/assets/images/working.jpg')";
     }
 `;
