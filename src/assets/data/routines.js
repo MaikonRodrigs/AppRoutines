@@ -3,7 +3,7 @@ const Routines = {
     {
       id: '000',
       hour: "08:40",
-      background: "morning",
+      background: "water",
       title: "ACORDAR",
       description: "se alongar e beber 1 copo de agua.",
       next: '08:50'

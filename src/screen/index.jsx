@@ -7,50 +7,50 @@ import * as I from '../assets/images/index'
 
 function Screen() {
   const data = Routines.routine
-  const [hours, setHours] = useState('')
-  const [currentArray, setCurrentArray] = useState(15)
+  var dataAtual = new Date();
+  var horas = dataAtual.getHours();
+  var minutos = dataAtual.getMinutes();
+  const time = horas + ':' + minutos
 
+  const [hours, setHours] = useState(0)
+  
   const seHou = useCallback(() => {
     var dataAtual = new Date();
     var horas = dataAtual.getHours();
     var minutos = dataAtual.getMinutes();
     const time = horas + ':' + minutos
     setHours(time)
-    // if (horas < 9) {
-    //   const time = '0' + horas + ':' + minutos
-    //   setHours(time)
-    // } else {
-    //   const time = horas + ':' + minutos
-    //   setHours(time)
-    // }
+    if (horas < 9) {
+      const time = '0' + horas + ':' + minutos
+      setHours(time)
+    } else {
+      const time = horas + ':' + minutos
+      setHours(time)
+    }
 
-    // if (horas >= 9 && minutos >= 9) {
-    //   const time = horas + ':' + minutos
-    //   setHours(time)
-    // }
+    if (horas >= 9 && minutos >= 9) {
+      const time = horas + ':' + minutos
+      setHours(time)
+    }
 
-    // if (horas >= 9 && minutos <= 9) {
-    //   const time = horas + ':' + '0' + minutos
-    //   setHours(time)
-    // }
+    if (horas >= 9 && minutos <= 9) {
+      const time = horas + ':' + '0' + minutos
+      setHours(time)
+    }
 
-    // if (horas <= 9 && minutos <= 9) {
-    //   const time = '0' + horas + ':' + '0' + minutos
-    //   setHours(time)
-    // }
+    if (horas <= 9 && minutos <= 9) {
+      const time = '0' + horas + ':' + '0' + minutos
+      setHours(time)
+    }
   }, [])
 
   function Array(i) {
     if (data[i]?.background === 'morning') { return I.Morning }
-    if (data[i]?.background === 'morning') { return I.Coffe }
     if (data[i]?.background === 'coffe') { return I.Coffe }
     if (data[i]?.background === 'daily') { return I.Daily }
-    if (data[i]?.background === 'eat_1') { return I.Eat_1 }
     if (data[i]?.background === 'work_0') { return I.Work_0 }
-    if (data[i]?.background === 'eat_1') { return I.Eat_1 }
     if (data[i]?.background === 'run') { return I.Run }
     if (data[i]?.background === 'hungry') { return I.Hungry }
-    if (data[i]?.background === 'work_2') { return I.Work_2 }
     if (data[i]?.background === 'eat_1') { return I.Eat_1 }
     if (data[i]?.background === 'work_2') { return I.Work_2 }
     if (data[i]?.background === 'work_1') { return I.Work_1 }
@@ -58,13 +58,12 @@ function Screen() {
     if (data[i]?.background === 'eat') { return I.Eat }
     if (data[i]?.background === 'relax_2') { return I.Relax_2 }
     if (data[i]?.background === 'study') { return I.Study }
-    if (data[i]?.background === 'eat_1') { return I.Eat_1 }
     if (data[i]?.background === 'gaming') { return I.Gaming }
     if (data[i]?.background === 'eat') { return I.Eat }
     if (data[i]?.background === 'water') { return I.Water }
     if (data[i]?.background === 'relax_1') { return I.Relax_1 }
-    if (data[i]?.background === 'sleep') { return I.Sleep }
-    if (data[i]?.background === 'sleep_1') { return I.Sleep_1 }
+    if (data[i]?.background === 'sleep') { return I.Sleep_1 }
+    if (data[i]?.background === 'sleep_1') { return I.Sleep }
   }
 
   useEffect(() => {
@@ -73,7 +72,7 @@ function Screen() {
     setInterval(() => {
       seHou()
       Array()
-    }, 60000)
+    }, 30000)
   }, [])
 
 
@@ -84,7 +83,6 @@ function Screen() {
       <S.Container>
         <S.Card >
           <S.Img background={() => Array(i)}>
-            {/* <S.Img background={() => setImagesBackground()} > */}
             <S.Header>
               <S.TasksAppIcon />
               <S.User>Maikon</S.User>
@@ -104,8 +102,14 @@ function Screen() {
             </S.NextMore>
           </S.RowTimed>
         </S.Card>
-        <S.NextCard >
-          <S.Img background={data[i + 1].background}>
+        {/* <S.NextCard >
+          <S.Img background={
+              data[24]?.background
+              ?
+              data[i].background
+              :
+              data[i + 1].background
+          }>
             <S.Header>
               <S.TasksAppIcon />
               <S.User>Maikon</S.User>
@@ -124,14 +128,14 @@ function Screen() {
               <S.TimedNext>{data[i + 1]?.next}</S.TimedNext>
             </S.NextMore>
           </S.RowTimed>
-        </S.NextCard>
+        </S.NextCard> */}
       </S.Container >
     )
   }
-  if (hours >= '8:40' && hours <= '8:50') { return routine(0) }
-  if (hours >= '8:50' && hours <= '9:00') { return routine(1) }
-  if (hours >= '9:00' && hours <= '9:15') { return routine(2) }
-  if (hours >= '09:15' && hours <= '10:20') { return routine(3) }
+  if (hours >= '08:40' && hours <= '08:50') { return routine(0) }
+  if (hours >= '08:50' && hours <= '09:00') { return routine(1) }
+  if (hours >= '09:00' && hours <= '09:15') { return routine(2) }
+  if (hours >= '09:16' && hours <= '10:20') { return routine(3) }
   if (hours >= '10:20' && hours <= '10:40') { return routine(4) }
   if (hours >= '10:40' && hours <= '11:45') { return routine(5) }
   if (hours >= '11:45' && hours <= '12:15') { return routine(6) }
@@ -150,8 +154,11 @@ function Screen() {
   if (hours >= '00:01' && hours <= '00:20') { return routine(19) }
   if (hours >= '00:20' && hours <= '00:30') { return routine(21) }
   if (hours >= '00:30' && hours <= '00:50') { return routine(22) }
-  if (hours >= '1:50' && hours <= '8:40') { return routine(23) }
+  if (hours >= '01:50' && hours <= '08:40') { return routine(23) }
 
+  return (
+    routine(23)
+  )
 }
 
 
