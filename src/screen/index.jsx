@@ -11,8 +11,8 @@ function Screen() {
   var horas = dataAtual.getHours();
   var minutos = dataAtual.getMinutes();
   const time = horas + ':' + minutos
-
-  const [hours, setHours] = useState(0)
+  
+  const [hours, setHours] = useState('')
   
   const seHou = useCallback(() => {
     var dataAtual = new Date();
@@ -20,7 +20,8 @@ function Screen() {
     var minutos = dataAtual.getMinutes();
     const time = horas + ':' + minutos
     setHours(time)
-    if (horas < 9) {
+
+    if (hours < 9) {
       const time = '0' + horas + ':' + minutos
       setHours(time)
     } else {
@@ -28,17 +29,17 @@ function Screen() {
       setHours(time)
     }
 
-    if (horas >= 9 && minutos >= 9) {
+    if (hours >= 9 && minutos >= 9) {
       const time = horas + ':' + minutos
       setHours(time)
     }
 
-    if (horas >= 9 && minutos <= 9) {
+    if (hours >= 9 && minutos <= 9) {
       const time = horas + ':' + '0' + minutos
       setHours(time)
     }
 
-    if (horas <= 9 && minutos <= 9) {
+    if (hours <= 9 && minutos <= 9) {
       const time = '0' + horas + ':' + '0' + minutos
       setHours(time)
     }
