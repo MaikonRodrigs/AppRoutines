@@ -98,10 +98,10 @@ function Screen() {
   if (hours >= '210' && hours <= '220') { return routine(16) }
   if (hours >= '220' && hours <= '2220') { return routine(17) }
   if (hours >= '2220' && hours <= '00') { return routine(18) }
-  if (hours >= '00' && hours <= '020') { return routine(19) }
-  if (hours >= '020' && hours <= '030') { return routine(21) }
-  if (hours >= '030' && hours <= '050') { return routine(22) }
-  if (hours >= '150' && hours <= '840') { return routine(23) }
+  if (hours >= '00' && hours <= '030') { return routine(19) }
+  if (hours >= '020' && hours <= '030') { return routine(20) }
+  if (hours >= '030' && hours <= '150') { return routine(21) }
+  if (hours >= '150' && hours <= '840') { return routine(22) }
   else { return routine(23) }
 }
 
