@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 
 import * as S from './styles';
 import Routines from '../assets/data/Routines'
@@ -7,42 +7,16 @@ import * as I from '../assets/images/index'
 
 function Screen() {
   const data = Routines.routine
-  var dataAtual = new Date();
-  var horas = dataAtual.getHours();
-  var minutos = dataAtual.getMinutes();
-  const time = horas + ':' + minutos
-  
+
   const [hours, setHours] = useState('')
-  
+
   const seHou = useCallback(() => {
-    var dataAtual = new Date();
-    var horas = dataAtual.getHours();
-    var minutos = dataAtual.getMinutes();
-    const time = horas + ':' + minutos
+    const dataAtual = new Date();
+    const horas = dataAtual.getHours();
+    const minutos = dataAtual.getMinutes();
+    const time = `${horas}${minutos}`
     setHours(time)
-
-    if (hours < 9) {
-      const time = '0' + horas + ':' + minutos
-      setHours(time)
-    } else {
-      const time = horas + ':' + minutos
-      setHours(time)
-    }
-
-    if (hours >= 9 && minutos >= 9) {
-      const time = horas + ':' + minutos
-      setHours(time)
-    }
-
-    if (hours >= 9 && minutos <= 9) {
-      const time = horas + ':' + '0' + minutos
-      setHours(time)
-    }
-
-    if (hours <= 9 && minutos <= 9) {
-      const time = '0' + horas + ':' + '0' + minutos
-      setHours(time)
-    }
+    // console.log('hours:' + time + ' || '+ 'useState:' + hours)
   }, [])
 
   function Array(i) {
@@ -70,14 +44,12 @@ function Screen() {
   useEffect(() => {
     Array()
     seHou()
+    console.log(hours)
     setInterval(() => {
       seHou()
       Array()
     }, 30000)
   }, [])
-
-
-
 
   function routine(i) {
     return (
@@ -103,63 +75,34 @@ function Screen() {
             </S.NextMore>
           </S.RowTimed>
         </S.Card>
-        {/* <S.NextCard >
-          <S.Img background={
-              data[24]?.background
-              ?
-              data[i].background
-              :
-              data[i + 1].background
-          }>
-            <S.Header>
-              <S.TasksAppIcon />
-              <S.User>Maikon</S.User>
-            </S.Header>
-          </S.Img>
-          <S.Description>
-            {data[i + 1]?.title}
-          </S.Description>
-          <S.DoMore>
-            {data[i + 1]?.description.toLowerCase()}
-          </S.DoMore>
-          <S.RowTimed>
-            <S.Timed>{data[i + 1]?.hour}</S.Timed>
-            <S.NextMore>
-              <S.ArrowCircleRightIcon />
-              <S.TimedNext>{data[i + 1]?.next}</S.TimedNext>
-            </S.NextMore>
-          </S.RowTimed>
-        </S.NextCard> */}
       </S.Container >
     )
   }
-  if (hours >= '08:40' && hours <= '08:50') { return routine(0) }
-  if (hours >= '08:50' && hours <= '09:00') { return routine(1) }
-  if (hours >= '09:00' && hours <= '09:15') { return routine(2) }
-  if (hours >= '09:16' && hours <= '10:20') { return routine(3) }
-  if (hours >= '10:20' && hours <= '10:40') { return routine(4) }
-  if (hours >= '10:40' && hours <= '11:45') { return routine(5) }
-  if (hours >= '11:45' && hours <= '12:15') { return routine(6) }
-  if (hours >= '12:15' && hours <= '14:00') { return routine(7) }
-  if (hours >= '14:00' && hours <= '14:15') { return routine(8) }
-  if (hours >= '14:15' && hours <= '16:00') { return routine(9) }
-  if (hours >= '16:00' && hours <= '16:20') { return routine(10) }
-  if (hours >= '16:20' && hours <= '18:00') { return routine(11) }
-  if (hours >= '18:00' && hours <= '18:15') { return routine(12) }
-  if (hours >= '18:15' && hours <= '19:00') { return routine(13) }
-  if (hours >= '19:00' && hours <= '19:20') { return routine(14) }
-  if (hours >= '19:20' && hours <= '21:00') { return routine(15) }
-  if (hours >= '21:00' && hours <= '22:00') { return routine(16) }
-  if (hours >= '22:00' && hours <= '22:20') { return routine(17) }
-  if (hours >= '22:20' && hours <= '23:59') { return routine(18) }
-  if (hours >= '00:01' && hours <= '00:20') { return routine(19) }
-  if (hours >= '00:20' && hours <= '00:30') { return routine(21) }
-  if (hours >= '00:30' && hours <= '00:50') { return routine(22) }
-  if (hours >= '01:50' && hours <= '08:40') { return routine(23) }
 
-  return (
-    routine(23)
-  )
+  if (hours >= '840' && hours <= '850') { return routine(0) }
+  if (hours >= '850' && hours <= '90') { return routine(1) }
+  if (hours >= '90' && hours <= '915') { return routine(2) }
+  if (hours >= '915' && hours <= '1020') { return routine(3) }
+  if (hours >= '1020' && hours <= '1040') { return routine(4) }
+  if (hours >= '1040' && hours <= '1145') { return routine(5) }
+  if (hours >= '1145' && hours <= '1215') { return routine(6) }
+  if (hours >= '1215' && hours <= '1400') { return routine(7) }
+  if (hours >= '1400' && hours <= '1415') { return routine(8) }
+  if (hours >= '1415' && hours <= '1600') { return routine(9) }
+  if (hours >= '1600' && hours <= '1620') { return routine(10) }
+  if (hours >= '1620' && hours <= '1800') { return routine(11) }
+  if (hours >= '1800' && hours <= '1815') { return routine(12) }
+  if (hours >= '1815' && hours <= '190') { return routine(13) }
+  if (hours >= '190' && hours <= '1920') { return routine(14) }
+  if (hours >= '1920' && hours <= '210') { return routine(15) }
+  if (hours >= '210' && hours <= '220') { return routine(16) }
+  if (hours >= '220' && hours <= '2220') { return routine(17) }
+  if (hours >= '2220' && hours <= '00') { return routine(18) }
+  if (hours >= '00' && hours <= '020') { return routine(19) }
+  if (hours >= '020' && hours <= '030') { return routine(21) }
+  if (hours >= '030' && hours <= '050') { return routine(22) }
+  if (hours >= '150' && hours <= '840') { return routine(23) }
+  else { return routine(23) }
 }
 
 
