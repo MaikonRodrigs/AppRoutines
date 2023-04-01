@@ -16,7 +16,30 @@ function Screen() {
     const minutos = dataAtual.getMinutes();
     const time = `${horas}${minutos}`
     setHours(time)
-    // console.log('hours:' + time + ' || '+ 'useState:' + hours)
+
+    if (horas < 9) {
+      const time = `'0' + ${horas} + ${minutos}`
+      setHours(time)
+    } else {
+      const time = `${horas}${minutos}`
+      setHours(time)
+    }
+
+    if (horas >= 9 && minutos >= 9) {
+      const time = `${horas}${minutos}`
+      setHours(time)
+    }
+
+    if (horas >= 9 && minutos <= 9) {
+      const time = `${horas} + '0' + ${minutos}`
+      setHours(time)
+    }
+
+    if (horas <= 9 && minutos <= 9) {
+      const time = `'0' + ${horas} + '0' + ${minutos}`
+      setHours(time)
+    }
+
   }, [])
 
   function Array(i) {
@@ -44,7 +67,7 @@ function Screen() {
   useEffect(() => {
     Array()
     seHou()
-    console.log(hours)
+    console.log('horas:' + hours)
     setInterval(() => {
       seHou()
       Array()
@@ -79,10 +102,10 @@ function Screen() {
     )
   }
 
-  if (hours >= '840' && hours <= '850') { return routine(0) }
-  if (hours >= '850' && hours <= '90') { return routine(1) }
-  if (hours >= '90' && hours <= '915') { return routine(2) }
-  if (hours >= '915' && hours <= '1020') { return routine(3) }
+  if (hours >= '0840' && hours <= '0850') { return routine(0) }
+  if (hours >= '0850' && hours <= '0090') { return routine(1) }
+  if (hours >= '0900' && hours <= '0915') { return routine(2) }
+  if (hours >= '0915' && hours <= '1020') { return routine(3) }
   if (hours >= '1020' && hours <= '1040') { return routine(4) }
   if (hours >= '1040' && hours <= '1145') { return routine(5) }
   if (hours >= '1145' && hours <= '1215') { return routine(6) }
@@ -92,16 +115,16 @@ function Screen() {
   if (hours >= '1600' && hours <= '1620') { return routine(10) }
   if (hours >= '1620' && hours <= '1800') { return routine(11) }
   if (hours >= '1800' && hours <= '1815') { return routine(12) }
-  if (hours >= '1815' && hours <= '190') { return routine(13) }
-  if (hours >= '190' && hours <= '1920') { return routine(14) }
+  if (hours >= '1815' && hours <= '1900') { return routine(13) }
+  if (hours >= '1900' && hours <= '1920') { return routine(14) }
   if (hours >= '1920' && hours <= '210') { return routine(15) }
-  if (hours >= '210' && hours <= '220') { return routine(16) }
-  if (hours >= '220' && hours <= '2220') { return routine(17) }
-  if (hours >= '2220' && hours <= '00') { return routine(18) }
-  if (hours >= '00' && hours <= '030') { return routine(19) }
-  if (hours >= '020' && hours <= '030') { return routine(20) }
-  if (hours >= '030' && hours <= '150') { return routine(21) }
-  if (hours >= '150' && hours <= '840') { return routine(22) }
+  if (hours >= '2100' && hours <= '2200') { return routine(16) }
+  if (hours >= '2200' && hours <= '2220') { return routine(17) }
+  if (hours >= '2220' && hours <= '0000') { return routine(18) }
+  if (hours >= '0000' && hours <= '0030') { return routine(19) }
+  if (hours >= '0020' && hours <= '0030') { return routine(20) }
+  if (hours >= '0030' && hours <= '0100') { return routine(22) }
+  if (hours >= '0100' && hours <= '0130') { return routine(23) }
   else { return routine(23) }
 }
 
