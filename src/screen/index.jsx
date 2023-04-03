@@ -71,8 +71,7 @@ function Screen() {
       console.log('horas:' + hours)
       seHou()
       Array()
-    // }, 30000)
-    }, 1000)
+    }, 30000)
   }, [])
 
   function routine(i) {
@@ -124,8 +123,8 @@ function Screen() {
   if (hours >= '2220' && hours <= '2359') { return routine(18) }
   if (hours >= '0000' && hours <= '0020') { return routine(19) }
   if (hours >= '0020' && hours <= '0030') { return routine(20) }
-  if (hours >= '0030' && hours <= '0100') { return routine(22) }
-  if (hours >= '0100' && hours <= '0130') { return routine(23) }
+  if (hours >= '0030' && hours <= '0050') { return routine(21) }
+  if (hours >= '0050' && hours <= '0130') { return routine(22) }
   else { return routine(23) }
 }
 
