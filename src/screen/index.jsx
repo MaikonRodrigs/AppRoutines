@@ -18,7 +18,7 @@ function Screen() {
     setHours(time)
 
     if (horas < 9) {
-      const time = `'0' + ${horas} + ${minutos}`
+      const time = `0${horas}${minutos}`
       setHours(time)
     } else {
       const time = `${horas}${minutos}`
@@ -31,12 +31,12 @@ function Screen() {
     }
 
     if (horas >= 9 && minutos <= 9) {
-      const time = `${horas} + '0' + ${minutos}`
+      const time = `${horas}0${minutos}`
       setHours(time)
     }
 
     if (horas <= 9 && minutos <= 9) {
-      const time = `'0' + ${horas} + '0' + ${minutos}`
+      const time = `0${horas}0${minutos}`
       setHours(time)
     }
 
@@ -67,11 +67,12 @@ function Screen() {
   useEffect(() => {
     Array()
     seHou()
-    console.log('horas:' + hours)
     setInterval(() => {
+      console.log('horas:' + hours)
       seHou()
       Array()
-    }, 30000)
+    // }, 30000)
+    }, 1000)
   }, [])
 
   function routine(i) {
@@ -121,7 +122,7 @@ function Screen() {
   if (hours >= '2100' && hours <= '2200') { return routine(16) }
   if (hours >= '2200' && hours <= '2220') { return routine(17) }
   if (hours >= '2220' && hours <= '2359') { return routine(18) }
-  if (hours >= '0000' && hours <= '0030') { return routine(19) }
+  if (hours >= '0000' && hours <= '0020') { return routine(19) }
   if (hours >= '0020' && hours <= '0030') { return routine(20) }
   if (hours >= '0030' && hours <= '0100') { return routine(22) }
   if (hours >= '0100' && hours <= '0130') { return routine(23) }
