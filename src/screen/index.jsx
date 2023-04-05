@@ -16,8 +16,8 @@ function Screen() {
     const minutos = dataAtual.getMinutes();
     const time = `${horas}${minutos}`
     setHours(time)
-
-    if (horas < 9) {
+  
+    if (horas <= 9) {
       const time = `0${horas}${minutos}`
       setHours(time)
     } else {
@@ -25,12 +25,12 @@ function Screen() {
       setHours(time)
     }
 
-    if (horas >= 9 && minutos >= 9) {
+    if (horas > 9 && minutos > 9) {
       const time = `${horas}${minutos}`
       setHours(time)
     }
 
-    if (horas >= 9 && minutos <= 9) {
+    if (horas > 9 && minutos <= 9) {
       const time = `${horas}0${minutos}`
       setHours(time)
     }
@@ -67,8 +67,8 @@ function Screen() {
   useEffect(() => {
     Array()
     seHou()
+    console.log('horas:' + hours)
     setInterval(() => {
-      console.log('horas:' + hours)
       seHou()
       Array()
     }, 30000)
@@ -103,7 +103,7 @@ function Screen() {
   }
 
   if (hours >= '0840' && hours <= '0850') { return routine(0) }
-  if (hours >= '0850' && hours <= '0090') { return routine(1) }
+  if (hours >= '0850' && hours <= '0900') { return routine(1) }
   if (hours >= '0900' && hours <= '0915') { return routine(2) }
   if (hours >= '0915' && hours <= '1020') { return routine(3) }
   if (hours >= '1020' && hours <= '1040') { return routine(4) }
